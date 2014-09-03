@@ -1,0 +1,24 @@
+{
+    "name": "SHMLibrary",
+    "type": "library",
+    "description": "SHMLibrary is a simple and small abstraction and queue layer for shared memory manipulation using PHP",
+    "keywords": ["php", "SHMLibrary", "share memory"],
+    "homepage": "https://github.com/HMinng/SHMLibrary",
+
+    "authors": [
+        {
+            "name": "heming",
+            "email": "jackhm18@gmail.com"
+        }
+    ],
+    
+    "require": {
+
+    },
+    
+    "autoload": {
+        "classmap" : [
+        	"src/"
+        ]
+    }
+}
