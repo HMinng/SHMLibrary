@@ -12,7 +12,7 @@ class Queue
     public static function open()
     {
         if (is_null(self::$shmId)) {
-            self::$shmId = msg_get_queue(self::DEFAULT_SHM_ID, parent::DEFAULT_PERMISSION);
+            self::$shmId = msg_get_queue(self::DEFAULT_SHM_ID, self::DEFAULT_PERMISSION);
 
             if (self::$shmId === false) {
                 throw new \Exception('Unable to create the message queue segment');

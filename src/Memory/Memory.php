@@ -29,7 +29,7 @@ class Memory
         $flag = shm_has_var(self::$shmId, $key);
 
         if ($flag) {
-            throw new \Exception('The key is already exists!');
+            shm_remove_var(self::$shmId, $key);
         }
 
         $flag = shm_put_var(self::$shmId, $key, $value);
@@ -58,7 +58,7 @@ class Memory
         $flag = shm_has_var(self::$shmId, $key);
 
         if (!$flag) {
-            throw new \Exception('The key is not found!');
+            return false;
         }
 
         return  shm_get_var(self::$shmId, $key);
@@ -66,7 +66,7 @@ class Memory
 
     public static function remove()
     {
-        $flag = shm_remove(self::$shmId);
+        $flag = (self::$shmId);
 
         if ( ! $flag) {
             throw new \Exception('Remove segment identifier failure!');
@@ -83,7 +83,7 @@ class Memory
     public static function getMemorySize($string)
     {
         $headSize = (PHP_INT_SIZE * 4) + 8;
-        $shmVarSize = (((strlen(serialize($string))+ (4 * PHP_INT_SIZE)) /4 ) * 4 ) + 4;
+        $shmVarSize = (((strlen(serialize($string)) + (4 * PHP_INT_SIZE)) /4 ) * 4 ) + 4;
         return  $headSize + $shmVarSize;
     }
 }
